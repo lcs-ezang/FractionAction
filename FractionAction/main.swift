@@ -20,12 +20,14 @@ var denominator = 0
 //Global remainder
 var remainder = 0
 
+// Sass the user
+print("Don't try to break me. You can't")
+print("Please enter an integer bigger than -1, i.e 0, 1, 2, 3")
 //Loop until valid numerator input is found
 while 2 == 2 {
     
     //Prompt for numerator
     print("Numerator?")
-    
     //Wait for numerator
     var numeratorInput = readLine()
     
@@ -38,12 +40,16 @@ while 2 == 2 {
     //Check for integers
     guard let givenInteger = Int(givenInput) else {
         //Failed input, back to start
+            print("Do you even know what an integer is?")
+
         continue
     }
+
     
     //Check for boundary
     if givenInteger < 0 {
         //Failed input
+        print("Do you even know how to count?")
         continue
     }
 
@@ -52,6 +58,9 @@ while 2 == 2 {
     numerator = givenInteger
     break
 }
+
+//Ask for a number
+print("Please enter an integer bigger than 0, i.e 1, 2, 3, 4")
 
 //Loop until valid numerator input is found
 while 2 == 2 {
@@ -65,6 +74,7 @@ while 2 == 2 {
     //Check for nil
     guard let givenInput = denominatorInput else {
         //Failed input, back to start
+        print("Do you even know what an integer is?")
         continue
     }
     
@@ -77,6 +87,7 @@ while 2 == 2 {
     //Check for boundary
     if givenInteger < 1 {
         //Failed input
+        print("Do you even know how to count?")
         continue
     }
     
@@ -91,32 +102,26 @@ while 2 == 2 {
 //Find whole number
 let wholeNumber = numerator/denominator
 
-// Simplify
-// If numerator == denominator, the answer will be a whole number
-// If numerator == 0, answer = 0
-// Both these have no fractions, so they can be skipped
-if numerator == denominator || numerator == 0 {
+// Remainder after the whole number
+remainder = numerator - wholeNumber * denominator
 
-} else {
+// Simplify
+// If remainder == 0
+// there are no fractions, so they can be skipped
+if remainder != 0 {
     // Find fraction
     
-    // Remainder after the whole number is
-    remainder = numerator - wholeNumber * denominator
-    // Simplify
-
     // Find the common factors of the remainder and the denominator
-        for i in stride(from: remainder, to: 2, by: -1) {
+    for i in stride(from: remainder, through: 2, by: -1) {
         
-            // Divide the remainder and the denominator by the common factor
-            if remainder%i == 0 && denominator%i == 0{
-                denominator /= i
-                remainder /= i
-                continue
+        // Divide the remainder and the denominator by the common factor
+        if remainder%i == 0 && denominator%i == 0 {
+            denominator /= i
+            remainder /= i
+            break
         }
     }
 }
-
-    
 
 // OUTPUT
 // Report results to the user here
@@ -140,7 +145,6 @@ else
 {
     print("The result is 0")
 }
-
 
 
 
